@@ -1,0 +1,113 @@
+young@young-desktop:~/Downloads/boost-python-examples-master$ mkdir build
+young@young-desktop:~/Downloads/boost-python-examples-master$ cd build/
+young@young-desktop:~/Downloads/boost-python-examples-master/build$ cmake ..
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PythonInterp: /home/young/anaconda3/bin/python (found version "3.7.1") 
+CMake Warning at /usr/share/cmake-3.5/Modules/FindBoost.cmake:725 (message):
+  Imported targets not available for Boost version 106900
+Call Stack (most recent call first):
+  /usr/share/cmake-3.5/Modules/FindBoost.cmake:763 (_Boost_COMPONENT_DEPENDENCIES)
+  /usr/share/cmake-3.5/Modules/FindBoost.cmake:1332 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:8 (FIND_PACKAGE)
+
+
+-- Boost version: 1.69.0
+-- Found the following Boost libraries:
+--   python
+-- Found PythonInterp: /home/young/anaconda3/bin/python (found suitable version "3.7.1", minimum required is "3") 
+-- Found PythonLibs: /home/young/anaconda3/lib/libpython3.7m.so (found suitable version "3.7.1", minimum required is "3") 
+-- PYTHON_LIBRARIES = /home/young/anaconda3/lib/libpython3.7m.so
+-- PYTHON_EXECUTABLE = /home/young/anaconda3/bin/python
+-- PYTHON_INCLUDE_DIRS = /home/young/anaconda3/include/python3.7m
+-- Boost_LIBRARIES = /usr/lib/x86_64-linux-gnu/libboost_python.so
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/young/Downloads/boost-python-examples-master/build
+young@young-desktop:~/Downloads/boost-python-examples-master/build$ make
+Scanning dependencies of target hello
+[  3%] Building CXX object 01-HelloWorld/CMakeFiles/hello.dir/hello.cpp.o
+[  6%] Linking CXX shared module hello.so
+[  6%] Built target hello
+Scanning dependencies of target classes
+[ 10%] Building CXX object 02-ExposingClasses/CMakeFiles/classes.dir/classes.cpp.o
+[ 13%] Linking CXX shared module classes.so
+[ 13%] Built target classes
+Scanning dependencies of target ctor
+[ 16%] Building CXX object 03-Constructors/CMakeFiles/ctor.dir/ctor.cpp.o
+[ 20%] Linking CXX shared module ctor.so
+[ 20%] Built target ctor
+Scanning dependencies of target member
+[ 23%] Building CXX object 04-ClassMembers/CMakeFiles/member.dir/member.cpp.o
+[ 26%] Linking CXX shared module member.so
+[ 26%] Built target member
+Scanning dependencies of target inheritance
+[ 30%] Building CXX object 05-Inheritance/CMakeFiles/inheritance.dir/inheritance.cpp.o
+[ 33%] Linking CXX shared module inheritance.so
+[ 33%] Built target inheritance
+Scanning dependencies of target virtual
+[ 36%] Building CXX object 06-VirtualFunctionsInPython/CMakeFiles/virtual.dir/virtual.cpp.o
+[ 40%] Linking CXX shared module virtual.so
+[ 40%] Built target virtual
+Scanning dependencies of target operators
+[ 43%] Building CXX object 07-Operators/CMakeFiles/operators.dir/operators.cpp.o
+[ 46%] Linking CXX shared module operators.so
+[ 46%] Built target operators
+Scanning dependencies of target policies
+[ 50%] Building CXX object 08-CallPolicies/CMakeFiles/policies.dir/policies.cpp.o
+[ 53%] Linking CXX shared module policies.so
+[ 53%] Built target policies
+Scanning dependencies of target overload
+[ 56%] Building CXX object 09-Overloading/CMakeFiles/overload.dir/overload.cpp.o
+[ 60%] Linking CXX shared module overload.so
+[ 60%] Built target overload
+Scanning dependencies of target mymodule
+[ 63%] Building CXX object 10-Embedding/CMakeFiles/mymodule.dir/mymodule.cpp.o
+[ 66%] Linking CXX shared module mymodule.so
+[ 66%] Built target mymodule
+Scanning dependencies of target embedding
+[ 70%] Building CXX object 10-Embedding/CMakeFiles/embedding.dir/mymodule.cpp.o
+[ 73%] Building CXX object 10-Embedding/CMakeFiles/embedding.dir/embedding.cpp.o
+[ 76%] Linking CXX executable embedding
+CMakeFiles/embedding.dir/mymodule.cpp.o: In function `PyInit_mymodule':
+mymodule.cpp:(.text+0x7e): undefined reference to `boost::python::detail::init_module(PyModuleDef&, void (*)())'
+CMakeFiles/embedding.dir/embedding.cpp.o: In function `main':
+embedding.cpp:(.text+0x210): undefined reference to `boost::python::exec_file(char const*, boost::python::api::object, boost::python::api::object)'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyString_Size'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyUnicodeUCS4_FromEncodedObject'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyFile_FromString'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyString_Type'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyInt_Type'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyString_FromString'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyUnicodeUCS4_AsWideChar'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyString_FromStringAndSize'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `Py_InitModule4_64'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyString_FromFormat'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyNumber_Divide'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyNumber_InPlaceDivide'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyInt_AsLong'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyString_InternFromString'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyClass_Type'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyString_AsString'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyInt_FromLong'
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libboost_python.so: undefined reference to `PyFile_AsFile'
+collect2: error: ld returned 1 exit status
+10-Embedding/CMakeFiles/embedding.dir/build.make:124: recipe for target '10-Embedding/embedding' failed
+make[2]: *** [10-Embedding/embedding] Error 1
+CMakeFiles/Makefile2:619: recipe for target '10-Embedding/CMakeFiles/embedding.dir/all' failed
+make[1]: *** [10-Embedding/CMakeFiles/embedding.dir/all] Error 2
+Makefile:94: recipe for target 'all' failed
+make: *** [all] Error 2
+young@young-desktop:~/Downloads/boost-python-examples-master/build$ 
