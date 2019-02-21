@@ -17,7 +17,7 @@ boost_1_69_0 means the name of the directory you extracted the compressed file.
 /home/young/Downloads/boost_1_69_0/tools/build/src/user-config.jam
 
 - You can see a sample contents of user-config.jam file in this link:
-https://github.com/youngminpark2559/env_setup/blob/master/build/boost_python/sample_contents_of_user-config.jam
+https://github.com/youngminpark2559/env_setup/blob/master/build/boost/sample_contents_of_user-config.jam
 
 You can see all of contents are commented out.
 The thing you should do is located at the end of this file to specify Python version and Python directory which you want to use.
