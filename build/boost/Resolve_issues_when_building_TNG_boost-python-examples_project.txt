@@ -1,0 +1,48 @@
+Resolve issues when building following project
+https://github.com/TNG/boost-python-examples/blob/master/README.md
+
+- You can run into errors when building
+https://github.com/youngminpark2559/env_setup/blob/master/build/boost/Resolve_issues_when_building_following_project_issue_message.txt
+
+- This error happens when you didn't speficy Boost.Python library which is built for Python3
+(I didn't test with Python2, you can pass with no error if you build this project with Python2)
+
+The solution for this error is to specify 
+1. Boost.Python library directory which is built for Python3
+2. Python which you want to use
+
+- First you just perform following commands at the folder of project like home/young/Downloads/boost-python-examples-master
+mkdir build
+cd build/
+cmake ..
+
+Then, you execute this command cmake -LA to see cmake variables you cam use
+
+- I searched all variables from the result of cmake -LA
+and final command you need to use if like
+you should change directories which you are using.
+
+cmake \
+-D PYTHON_EXECUTABLE=/home/young/anaconda3/envs/py36boost_python_example/bin/python3 \
+-D PYTHON_INCLUDE_DIR=/home/young/anaconda3/envs/py36boost_python_example/include/python3.6m \
+-D PYTHON_LIBRARY=/home/young/anaconda3/envs/py36boost_python_example/lib/libpython3.6m.so \
+-D Boost_INCLUDE_DIR=/home/young/Downloads/boost_1_69_0 \
+-D Boost_LIBRARY_DIR_DEBUG=/home/young/Downloads/boost_1_69_0/stage/lib \
+-D Boost_LIBRARY_DIR_RELEASE=/home/young/Downloads/boost_1_69_0/stage/lib \
+-D Boost_PYTHON_LIBRARY_DEBUG:FILEPATH=/home/young/Downloads/boost_1_69_0/stage/lib/libboost_python36.so \
+-D Boost_PYTHON_LIBRARY_RELEASE:FILEPATH=/home/young/Downloads/boost_1_69_0/stage/lib/libboost_python36.so \
+..
+
+- Then, you perform make, and you will complete the build
+
+young@young-desktop:~/Downloads/boost-python-examples-master/build$ make
+Scanning dependencies of target hello
+[  3%] Building CXX object 01-HelloWorld/CMakeFiles/hello.dir/hello.cpp.o
+[  6%] Linking CXX shared module hello.so
+[  6%] Built target hello
+...
+Scanning dependencies of target auto_instance
+[ 93%] Building CXX object 13-AutoInstantiation/CMakeFiles/auto_instance.dir/myextension.cpp.o
+[ 96%] Building CXX object 13-AutoInstantiation/CMakeFiles/auto_instance.dir/auto_instance.cpp.o
+[100%] Linking CXX executable auto_instance
+[100%] Built target auto_instance
