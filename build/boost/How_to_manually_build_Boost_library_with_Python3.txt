@@ -1,0 +1,44 @@
+How to manually build Boost library with Python3
+
+- Download Boost from http://www.boost.org/
+This is a direct link to the download page
+https://www.boost.org/users/download/
+
+You can click one of these to download Boost source file.
+boost_1_69_0.tar.bz2
+boost_1_69_0.tar.gz
+
+- After download, you extract that compressed file.
+And enter that extracted directory.
+
+- And you create configuration file in this path and the file name (user-config.jam)
+boost_1_69_0 means the name of the directory you extracted the compressed file.
+/home/young/Downloads is my directory name so you should change it to your directory.
+/home/young/Downloads/boost_1_69_0/tools/build/src/user-config.jam
+
+- You can see a sample contents of user-config.jam file in this link:
+https://github.com/youngminpark2559/env_setup/blob/master/build/boost_python/sample_contents_of_user-config.jam
+
+You can see all of contents are commented out.
+The thing you should do is located at the end of this file to specify Python version and Python directory which you want to use.
+/home/young/anaconda3/envs/py36boost_python_example/bin is my anaconda Python directory, you shoud change it to your Python path.
+using python : 3.6 : /home/young/anaconda3/envs/py36boost_python_example/bin/python3 : /home/young/anaconda3/envs/py36boost_python_example/include/python3.6m : /home/young/anaconda3/envs/py36boost_python_example/lib ;
+
+- At the directory of /home/young/Downloads/boost_1_69_0
+Run following command with specifying Python you want to use.
+./bootstrap.sh \
+--with-python=/home/young/anaconda3/envs/py36boost_python_example/bin/python3 \
+--with-python-version=3.6 \
+--with-python-root=/home/young/anaconda3/envs/py36boost_python_example/lib
+
+- Then, compile Boost by executing following command also at the directory of /home/young/Downloads/boost_1_69_0
+./b2
+
+- After completion, all compiled library files like shared objects (.so) files are generated into /home/young/Downloads/boost_1_69_0/stage/lib
+
+- If you execute following command
+sudo ./b2 install
+I guess it copy all library files into user directories like /usr/local/include, /usr/lib/x86_64-linux-gnu
+But I personally won't do it.
+I'll use compiled Boost library from this directory /home/young/Downloads/boost_1_69_0 
+by specifying this directory when I build other libraries with linking this Boost directory.
